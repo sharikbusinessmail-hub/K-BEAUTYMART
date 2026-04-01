@@ -34,6 +34,15 @@ export default function QuickAddModal({ product, onClose, onAddToCart }: QuickAd
     }
   }, [product]);
 
+  // Prevent background scrolling while the modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
   // Get the display price based on selected variant
   const getDisplayPrice = (): number => {
     if (hasVariants) {

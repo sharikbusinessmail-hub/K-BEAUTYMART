@@ -82,8 +82,9 @@ export default function ProductDetail() {
     let finalPrice = product.price;
 
     // Apply variant pricing
-    if (product.variants) {
+    if (product.variants && product.variants.length > 0) {
       for (const variantGroup of product.variants) {
+        if (!variantGroup.options) continue;
         const selectedOption = selectedVariants[variantGroup.type];
         if (selectedOption) {
           const option = variantGroup.options.find(opt => opt.label === selectedOption);
@@ -103,6 +104,7 @@ export default function ProductDetail() {
     // Check if all variant groups have selections
     if (product.variants && product.variants.length > 0) {
       for (const variantGroup of product.variants) {
+        if (!variantGroup.options || variantGroup.options.length === 0) continue;
         if (!selectedVariants[variantGroup.type]) {
           toast.error(`Please select ${variantGroup.type}`);
           return;
@@ -116,6 +118,7 @@ export default function ProductDetail() {
     let variantInfo: { type: string; label: string; price: number } | undefined;
     if (product.variants && product.variants.length > 0) {
       for (const variantGroup of product.variants) {
+        if (!variantGroup.options) continue;
         const selected = selectedVariants[variantGroup.type];
         if (selected) {
           const option = variantGroup.options.find(opt => opt.label === selected);
@@ -233,28 +236,28 @@ export default function ProductDetail() {
             {/* Product Details */}
             <div className="space-y-3">
               {product.description && (
-                <div>
+                <div key="description">
                   <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{product.description}</p>
                 </div>
               )}
 
               {product.material && (
-                <div>
+                <div key="material">
                   <span className="font-semibold text-gray-900">Material:</span>{" "}
                   <span className="text-gray-600">{product.material}</span>
                 </div>
               )}
 
               {product.skinType && (
-                <div>
+                <div key="skinType">
                   <span className="font-semibold text-gray-900">Skin Type:</span>{" "}
                   <span className="text-gray-600">{product.skinType}</span>
                 </div>
               )}
 
               {product.volume && (
-                <div>
+                <div key="volume">
                   <span className="font-semibold text-gray-900">Volume:</span>{" "}
                   <span className="text-gray-600">{product.volume}</span>
                 </div>
@@ -270,7 +273,7 @@ export default function ProductDetail() {
                       {variantGroup.type}
                     </label>
                     <div className="flex flex-wrap gap-2">
-                      {variantGroup.options.map((option) => (
+                      {variantGroup.options && variantGroup.options.map((option) => (
                         <button
                           key={option.label}
                           onClick={() =>

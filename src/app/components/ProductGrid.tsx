@@ -98,6 +98,7 @@ export default function ProductGrid() {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
+                      e.stopPropagation(); // Fix applied here
                       toggleWishlist(product.id);
                     }}
                     className="absolute top-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-all z-10"
@@ -114,6 +115,7 @@ export default function ProductGrid() {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation(); // Fix applied here
                         handleAddToCart(product);
                       }}
                       className="w-full bg-[#9966cc] text-white py-3 font-semibold hover:bg-[#7744aa] transition-colors flex items-center justify-center gap-2"
