@@ -5,7 +5,7 @@ export default function HeroBanner() {
     <div className="relative h-[500px] md:h-[600px] bg-gradient-to-r from-purple-100 to-pink-100 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://plus.unsplash.com/premium_photo-1664474898608-7537d5780e17?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://4kwallpapers.com/images/walls/thumbs_2t/23680.jpg"
           alt="K-Pop Fashion"
           className="w-full h-full object-cover opacity-40"
         />
