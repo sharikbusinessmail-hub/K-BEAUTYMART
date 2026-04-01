@@ -2,32 +2,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
 import { useNavigate } from "react-router";
 
-// 1. Import your local images here
-// Make sure the paths match exactly where you saved your image files!
-// If your images are in src/assets/groups/, the paths would look like this:
-import btsImg from "../../assets/groups/bts.png";
-import blackpinkImg from "../../assets/groups/blackpink.png";
-import straykidsImg from "../../assets/groups/straykids.png";
-import twiceImg from "../../assets/groups/twice.png";
-import newjeansImg from "../../assets/groups/newjeans.png";
-import seventeenImg from "../../assets/groups/seventeen.png";
-import enhypenImg from "../../assets/groups/enhypen.png";
-import txtImg from "../../assets/groups/txt.png";
-import aespaImg from "../../assets/groups/aespa.png";
-import lesserafimImg from "../../assets/groups/lesserafim.png";
-
-// 2. Replace the imgur links with the imported image variables
 const groups = [
-  { name: "BTS", color: "#9966cc", image: btsImg },
-  { name: "BLACKPINK", color: "#ff4081", image: blackpinkImg },
-  { name: "Stray Kids", color: "#ff6b35", image: straykidsImg },
-  { name: "TWICE", color: "#ff90b3", image: twiceImg },
-  { name: "NewJeans", color: "#7ec8e3", image: newjeansImg },
-  { name: "SEVENTEEN", color: "#ff7eb9", image: seventeenImg },
-  { name: "ENHYPEN", color: "#c77dff", image: enhypenImg },
-  { name: "TXT", color: "#92c9ff", image: txtImg },
-  { name: "aespa", color: "#c5a3ff", image: aespaImg },
-  { name: "LE SSERAFIM", color: "#ffc8dd", image: lesserafimImg },
+  { name: "BTS", color: "#9966cc", image: "https://i.imgur.com/7QfPGhB.png", emoji: "💜" },
+  { name: "BLACKPINK", color: "#ff4081", image: "https://i.imgur.com/GqrOdDN.png", emoji: "🖤" },
+  { name: "Stray Kids", color: "#ff6b35", image: "https://i.imgur.com/6sPuKXb.png", emoji: "🧭" },
+  { name: "TWICE", color: "#ff90b3", image: "https://i.imgur.com/xNQYpXu.png", emoji: "🍭" },
+  { name: "NewJeans", color: "#7ec8e3", image: "https://i.imgur.com/Ljf9K6p.png", emoji: "👖" },
+  { name: "SEVENTEEN", color: "#ff7eb9", image: "https://i.imgur.com/LF01DhZ.png", emoji: "💎" },
+  { name: "ENHYPEN", color: "#c77dff", image: "https://i.imgur.com/xVpjfbv.png", emoji: "🧬" },
+  { name: "TXT", color: "#92c9ff", image: "https://i.imgur.com/UiX4X3d.png", emoji: "🌟" },
+  { name: "aespa", color: "#c5a3ff", image: "https://i.imgur.com/F8T0u1o.png", emoji: "🌐" },
+  { name: "LE SSERAFIM", color: "#ffc8dd", image: "https://i.imgur.com/Cf4nHLF.png", emoji: "🔥" },
 ];
 
 export default function ShopByGroup() {
@@ -76,19 +61,13 @@ export default function ShopByGroup() {
               className="flex-shrink-0 flex flex-col items-center gap-3 cursor-pointer group"
             >
               <div
-                className="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center text-white font-bold shadow-lg transition-all group-hover:scale-110 group-hover:shadow-xl overflow-hidden ring-4 ring-transparent group-hover:ring-opacity-50"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-lg transition-all group-hover:scale-110 group-hover:shadow-xl overflow-hidden ring-4 ring-transparent group-hover:ring-opacity-50"
                 style={{
-                  backgroundColor: group.color, // Keeps the nice background color behind transparent PNGs
+                  backgroundColor: group.color,
                   ["--tw-ring-color" as any]: group.color,
                 }}
               >
-                {/* 3. Render the image here instead of the emoji */}
-                <img 
-                  src={group.image} 
-                  alt={`${group.name} logo`} 
-                  className="w-full h-full object-cover" 
-                  // Note: Use 'object-contain' instead of 'object-cover' if your logos are getting cut off at the edges
-                />
+                <span className="drop-shadow-lg">{group.emoji}</span>
               </div>
               <span className="text-sm md:text-base font-semibold text-gray-900 group-hover:text-[#9966cc] transition-colors">
                 {group.name}
